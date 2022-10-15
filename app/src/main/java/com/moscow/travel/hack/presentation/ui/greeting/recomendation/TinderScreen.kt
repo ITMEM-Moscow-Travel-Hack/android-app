@@ -1,14 +1,7 @@
 package com.moscow.travel.hack.presentation.ui.greeting.recomendation
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -59,7 +52,7 @@ fun TinderScreen(
                 Modifier
                     .padding(24.dp)
                     .weight(1f)
-                    .aspectRatio(1f)
+                    .fillMaxHeight(0.8f)
             ) {
                 states.forEach { (place, state) ->
                     if (state.swipedDirection == null) {
