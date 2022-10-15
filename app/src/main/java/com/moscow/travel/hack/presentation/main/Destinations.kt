@@ -6,7 +6,15 @@ import com.moscow.travel.hack.presentation.main.MainDestinations.MAP
 object MainDestinations {
     const val GREETING = "greeting"
     const val MAP = "map"
+    const val MAIN = "main"
     //TODO: Описать остальные экраны
+}
+
+enum class MainSections(
+    val route: String
+) {
+    MAIN("$MAIN/main"),
+    SUGGESTIONS("$MAIN/suggestions")
 }
 
 enum class GreetingSections(

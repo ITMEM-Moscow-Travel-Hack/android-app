@@ -1,3 +1,4 @@
+
 package com.moscow.travel.hack.presentation.ui.greeting.welcome
 
 import androidx.compose.foundation.Image
