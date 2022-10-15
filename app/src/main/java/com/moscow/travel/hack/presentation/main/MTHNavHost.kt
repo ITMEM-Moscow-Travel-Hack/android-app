@@ -39,7 +39,9 @@ fun MTHNavHost(
             )
         }
         composable(RecomendationsSections.TINDER.route) {
-            TinderScreen()
+            TinderScreen(
+                onBackPressed = { navController.navigateUp() },
+            )
         }
         composable(MainSections.MAIN.route) {
             MainScreen(

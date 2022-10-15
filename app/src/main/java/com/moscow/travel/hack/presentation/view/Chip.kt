@@ -37,7 +37,7 @@ fun Chip(item: InterestItem, modifier: Modifier = Modifier, onClick: () -> Unit)
                 Icon(
                     Icons.Default.Done,
                     null,
-                    modifier = Modifier.padding(start = 8.dp)
+                    modifier = Modifier.padding(start = 8.dp),
                 )
             }
             Text(
