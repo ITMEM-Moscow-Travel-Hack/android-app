@@ -5,8 +5,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.moscow.travel.hack.presentation.ui.greeting.interests.InterestsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.onboarding.OnboardingScreen
+import com.moscow.travel.hack.presentation.ui.greeting.recomendation.StartSearchScreen
+import com.moscow.travel.hack.presentation.ui.greeting.recomendation.TinderScreen
 import com.moscow.travel.hack.presentation.ui.greeting.welcome.WelcomeScreen
+import com.moscow.travel.hack.presentation.ui.main.main.MainScreen
+import com.moscow.travel.hack.presentation.ui.main.suggestions.SuggestionsScreen
 
 @Composable
 fun MTHNavHost(
@@ -21,8 +26,8 @@ fun MTHNavHost(
         }
         composable(GreetingSections.ONBOARDING.route) {
             OnboardingScreen(
-                onSignUpClick = { navController.navigate(MapSections.MAIN.route) },
-                onLoginClick = { navController.navigate(MapSections.MAIN.route) }
+                onSignUpClick = {  },
+                onLoginClick = {  }
             )
         }
         composable(InterestsSections.MAIN.route) {
@@ -44,6 +49,5 @@ fun MTHNavHost(
                 onBackPressed = { navController.navigateUp() }
             )
         }
-        // Map todo
     }
 }

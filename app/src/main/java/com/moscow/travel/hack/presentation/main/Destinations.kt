@@ -2,13 +2,12 @@ package com.moscow.travel.hack.presentation.main
 
 import com.moscow.travel.hack.presentation.main.MainDestinations.GREETING
 import com.moscow.travel.hack.presentation.main.MainDestinations.INTEREST
-import com.moscow.travel.hack.presentation.main.MainDestinations.MAP
 import com.moscow.travel.hack.presentation.main.MainDestinations.RECOMENDATIONS
 
 object MainDestinations {
     const val GREETING = "greeting"
-    const val MAP = "map"
     const val INTEREST = "interest"
+    const val MAIN = "main"
     const val RECOMENDATIONS = "recomendations"
     //TODO: Описать остальные экраны
 }
@@ -18,12 +17,6 @@ enum class GreetingSections(
 ) {
     WELCOME("$GREETING/welcome"),
     ONBOARDING("$GREETING/onboarding"),
-}
-
-enum class MapSections(
-    val route: String
-) {
-    MAIN("$MAP/main"),
 }
 
 enum class InterestsSections(
@@ -37,4 +30,11 @@ enum class RecomendationsSections(
 ) {
     START_SEARCH("$RECOMENDATIONS/start_search"),
     TINDER("$RECOMENDATIONS/main"),
+}
+
+enum class MainSections(
+    val route: String
+) {
+    MAIN("$MAIN/main"),
+    SUGGESTIONS("$MAIN/suggestions")
 }

@@ -24,8 +24,6 @@ class AppState(
 
     @Composable
     fun getStartDestination(): String {
-        return RecomendationsSections.START_SEARCH.route
-        //todo
         return MainSections.MAIN.route
     }
 
