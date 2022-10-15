@@ -26,15 +26,17 @@ fun MTHNavHost(
         }
         composable(GreetingSections.ONBOARDING.route) {
             OnboardingScreen(
-                onSignUpClick = {  },
-                onLoginClick = {  }
+                onSignUpClick = { navController.navigate(InterestsSections.MAIN.route) },
+                onLoginClick = { navController.navigate(InterestsSections.MAIN.route) }
             )
         }
         composable(InterestsSections.MAIN.route) {
-            InterestsScreen(onSaveClick = {  })
+            InterestsScreen(onSaveClick = { navController.navigate(MainSections.MAIN.route) })
         }
         composable(RecomendationsSections.START_SEARCH.route) {
-            StartSearchScreen()
+            StartSearchScreen(
+                onTinderClick = { navController.navigate(RecomendationsSections.TINDER.route) }
+            )
         }
         composable(RecomendationsSections.TINDER.route) {
             TinderScreen()
@@ -46,7 +48,8 @@ fun MTHNavHost(
         }
         composable(MainSections.SUGGESTIONS.route) {
             SuggestionsScreen(
-                onBackPressed = { navController.navigateUp() }
+                onBackPressed = { navController.navigateUp() },
+                onStartClick = { navController.navigate(RecomendationsSections.START_SEARCH.route) }
             )
         }
     }

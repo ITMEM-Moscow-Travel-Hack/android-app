@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.moscow.travel.hack.R
 
@@ -32,14 +33,15 @@ fun WelcomeScreen(
         ) {
             Text(
 //                    stringResource(R.string.hello_label),
-                "Привет",
+                "Привет! Я помогу с организацией твоего путешествия",
                 style = MaterialTheme.typography.h5,
-                modifier = Modifier.padding(end = 10.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
+                textAlign = TextAlign.Center
             )
             Image(
-                painterResource(R.drawable.ic_launcher_background),
+                painterResource(R.drawable.ic_welcome),
                 contentDescription = null,
-                Modifier.padding(top = 36.dp)
+                Modifier.padding(top = 100.dp)
             )
         }
         Column(
@@ -58,7 +60,7 @@ fun WelcomeScreen(
             ) {
                 Text(
 //                        stringResource(R.string.continue_label)
-                    "Продолжить"
+                    "Поехали!"
                 )
             }
             Spacer(modifier = Modifier.height(32.dp))

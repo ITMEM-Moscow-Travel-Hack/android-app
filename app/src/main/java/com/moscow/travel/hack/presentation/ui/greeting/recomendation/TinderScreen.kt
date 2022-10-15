@@ -51,12 +51,8 @@ fun TinderScreen(
                                 state = state,
                                 blockedDirections = listOf(Direction.Down, Direction.Up),
                                 onSwiped = {
-                                    // swipes are handled by the LaunchedEffect
-                                    // so that we track button clicks & swipes
-                                    // from the same place
                                 },
                                 onSwipeCancel = {
-//                                    hint = "You canceled the swipe"
                                 }
                             ),
                         place = place,

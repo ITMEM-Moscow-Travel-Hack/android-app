@@ -15,8 +15,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SuggestionsScreen(onBackPressed: () -> Unit) {
-    val modifier = Modifier.fillMaxWidth(0.8f).height(52.dp)
+fun SuggestionsScreen(
+    onBackPressed: () -> Unit,
+    onStartClick: () -> Unit,
+) {
+    val modifier = Modifier
+        .fillMaxWidth(0.8f)
+        .height(52.dp)
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -30,7 +35,9 @@ fun SuggestionsScreen(onBackPressed: () -> Unit) {
 //            modifier = modifier
 //        )
         SexyTextField("Введите желаемый город", modifier = modifier)
-        SexyButton("Поехали!", modifier = modifier)
+        SexyButton(modifier = modifier, "Поехали!") {
+            onStartClick()
+        }
         //CitySuggestions()
     }
 }
@@ -69,10 +76,10 @@ fun SexyTextField(
 
 @Composable
 fun SexyButton(
+    modifier: Modifier = Modifier,
     name: String = "",
     icon: Int? = null,
     onClick: () -> Unit = {},
-    modifier: Modifier = Modifier,
 ) {
     Button(
         onClick = onClick,

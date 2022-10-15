@@ -5,6 +5,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Filter
+import androidx.compose.material.icons.filled.Filter1
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,7 +23,7 @@ fun SearchField(
             onClick = onFilterClick,
         ) {
             Icon(
-                Icons.Default.Filter,
+                Icons.Default.Settings,
                 contentDescription = "",
                 tint = Color.Black
             )

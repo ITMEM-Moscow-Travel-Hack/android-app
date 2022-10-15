@@ -73,20 +73,20 @@ fun OnboardingScreen(onSignUpClick: () -> Unit, onLoginClick: () -> Unit) {
 
     val onboardingList = listOf(
         OnboardingPagerItem(
-            painterResource(R.drawable.ic_launcher_background),
-            stringResource(R.string.app_name)
+            painterResource(R.drawable.ic_plan),
+            "Планируйте поездки"
         ),
         OnboardingPagerItem(
-            painterResource(R.drawable.ic_launcher_background),
-            stringResource(R.string.app_name)
+            painterResource(R.drawable.ic_place),
+            "Выбирайте места и мероприятия"
         ),
         OnboardingPagerItem(
-            painterResource(R.drawable.ic_launcher_background),
-            stringResource(R.string.app_name)
+            painterResource(R.drawable.ic_hotel),
+            "Бронируйте отели"
         ),
         OnboardingPagerItem(
-            painterResource(R.drawable.ic_launcher_background),
-            stringResource(R.string.app_name)
+            painterResource(R.drawable.ic_receipt),
+            "Оплачивайте все одним чеком"
         ),
     )
 

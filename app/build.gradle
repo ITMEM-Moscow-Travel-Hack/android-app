@@ -85,6 +85,9 @@ dependencies {
     // Image pager
     implementation "com.google.accompanist:accompanist-pager:$compose_pager_version"
 
+    // flow layout
+    implementation "com.google.accompanist:accompanist-flowlayout:0.26.5-rc"
+
     // hilt di
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
