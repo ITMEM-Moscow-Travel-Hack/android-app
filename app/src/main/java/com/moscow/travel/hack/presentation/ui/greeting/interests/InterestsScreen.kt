@@ -1,23 +1,17 @@
 package com.moscow.travel.hack.presentation.ui.greeting.interests
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.flowlayout.FlowRow
-import com.moscow.travel.hack.R
 import com.moscow.travel.hack.presentation.view.Chip
 import com.moscow.travel.hack.presentation.view.InterestItem
+import com.moscow.travel.hack.presentation.view.SexyButton
 
 @Composable
 fun InterestsScreen(
@@ -49,28 +43,20 @@ fun InterestsScreen(
         }
         Spacer(modifier = Modifier.weight(1f))
         Column(modifier = Modifier.fillMaxWidth()) {
-            Button(
+            SexyButton(
                 onClick = onSaveClick,
-                Modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 48.dp),
-            ) {
-                Text(
-                    "Пропустить",
-                    modifier = Modifier,
-                )
-            }
-            Button(
+                name = "Пропустить"
+            )
+            SexyButton(
                 onClick = onSaveClick,
-                Modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 48.dp),
-            ) {
-                Text(
-                    stringResource(R.string.save_and_continue),
-                    modifier = Modifier,
-                )
-            }
+                name = "Сохранить и продолжить"
+            )
         }
     }
 }

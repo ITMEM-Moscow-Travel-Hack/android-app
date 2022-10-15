@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.moscow.travel.hack.presentation.theme.Shapes
 
 data class InterestItem(
     val name: String,
@@ -22,7 +21,7 @@ data class InterestItem(
 @Composable
 fun Chip(item: InterestItem, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .padding(4.dp)
             .clip(MaterialTheme.shapes.medium)
             .clickable { onClick() },
@@ -31,7 +30,11 @@ fun Chip(item: InterestItem, modifier: Modifier = Modifier, onClick: () -> Unit)
         color = if (item.isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
     ) {
         val chipModifier =
-            if (!item.isSelected) Modifier.border(1.dp, MaterialTheme.colors.onBackground, MaterialTheme.shapes.medium) else Modifier
+            if (!item.isSelected) Modifier.border(
+                1.dp,
+                MaterialTheme.colors.onBackground,
+                MaterialTheme.shapes.medium
+            ) else Modifier
         Row(
             chipModifier,
             verticalAlignment = Alignment.CenterVertically
