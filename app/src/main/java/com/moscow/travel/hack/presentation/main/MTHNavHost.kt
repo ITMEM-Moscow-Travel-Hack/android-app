@@ -5,10 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.moscow.travel.hack.presentation.ui.greeting.interests.InterestsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.onboarding.OnboardingScreen
-import com.moscow.travel.hack.presentation.ui.greeting.recomendation.StartSearchScreen
-import com.moscow.travel.hack.presentation.ui.greeting.recomendation.TinderScreen
 import com.moscow.travel.hack.presentation.ui.greeting.welcome.WelcomeScreen
 
 @Composable
@@ -36,6 +33,16 @@ fun MTHNavHost(
         }
         composable(RecomendationsSections.TINDER.route) {
             TinderScreen()
+        }
+        composable(MainSections.MAIN.route) {
+            MainScreen(
+                onSuggestionsClick = { navController.navigate(MainSections.SUGGESTIONS.route) }
+            )
+        }
+        composable(MainSections.SUGGESTIONS.route) {
+            SuggestionsScreen(
+                onBackPressed = { navController.navigateUp() }
+            )
         }
         // Map todo
     }
