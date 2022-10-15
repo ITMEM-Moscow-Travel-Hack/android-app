@@ -5,7 +5,6 @@ import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
 import com.moscow.travel.hack.BuildConfig
 import com.onesignal.OneSignal
-import com.yandex.mapkit.MapKitFactory
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.Forest.plant
@@ -17,7 +16,6 @@ class App : MultiDexApplication(), Configuration.Provider {
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
-
     override fun getWorkManagerConfiguration(): Configuration {
         return Configuration.Builder()
             .setWorkerFactory(workerFactory)
@@ -26,15 +24,10 @@ class App : MultiDexApplication(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-        initMapKit()
         initOneSignal()
         if (BuildConfig.DEBUG) {
             plant(Timber.DebugTree())
         }
-    }
-
-    private fun initMapKit() {
-        MapKitFactory.setApiKey(BuildConfig.MAP_KIT_API_KEY)
     }
 
     private fun initOneSignal() {
