@@ -22,7 +22,7 @@ fun CircleButton(
         modifier = Modifier
             .clip(CircleShape)
             .background(MaterialTheme.colors.primary)
-            .size(56.dp)
+            .size(72.dp)
             .border(2.dp, MaterialTheme.colors.primary, CircleShape),
         onClick = onClick
     ) {

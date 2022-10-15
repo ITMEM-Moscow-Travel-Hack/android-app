@@ -24,7 +24,7 @@ object Light {
 }
 
 val Colors.TFBackground: Color
-    get() = if (isLight) Light.TFBackground else Dark.TFBackground
+    get() = if (isLight) Light.Background1 else Dark.Background1
 
 val Colors.Background2: Color
     get() = if (isLight) Light.Background2 else Dark.Background2
