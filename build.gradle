@@ -22,7 +22,6 @@ buildscript {
     ext.hilt_version = '2.43.2'
     ext.timber_version = '5.0.1'
     ext.coil_version = '2.1.0'
-    ext.yandex_map_version = '4.1.0'
 
     repositories {
         google()

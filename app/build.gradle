@@ -122,9 +122,6 @@ dependencies {
     // logger
     implementation "com.jakewharton.timber:timber:$timber_version"
 
-    // maps
-    implementation "com.yandex.android:maps.mobile:$yandex_map_version-full"
-
     // network images
     implementation "io.coil-kt:coil-compose:$coil_version"
 
