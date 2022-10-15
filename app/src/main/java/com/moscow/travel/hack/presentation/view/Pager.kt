@@ -2,6 +2,7 @@ package com.moscow.travel.hack.presentation.view
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -11,8 +12,9 @@ import androidx.constraintlayout.compose.Dimension
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
-import com.moscow.travel.hack.presentation.theme.Purple200
-import com.moscow.travel.hack.presentation.theme.Teal200
+import com.moscow.travel.hack.presentation.theme.Secondary
+import com.moscow.travel.hack.presentation.theme.YellowPrimary
+import com.moscow.travel.hack.presentation.theme.YellowPrimaryVariant
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -51,13 +53,13 @@ private fun PagerIndicator(
             if (pagerState.currentPage == i) {
                 Canvas(modifier = Modifier.size(12.dp)) {
                     drawCircle(
-                        color = Purple200
+                        color = YellowPrimary
                     )
                 }
             } else {
                 Canvas(modifier = Modifier.size(8.dp)) {
                     drawCircle(
-                        color = Teal200
+                        color = YellowPrimaryVariant
                     )
                 }
             }

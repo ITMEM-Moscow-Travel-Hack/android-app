@@ -18,8 +18,8 @@ Background2
 
 private val DarkColorPalette = darkColors(
     primary = YellowPrimary,
-    primaryVariant = Color.Cyan,
-    secondary = Teal200,
+    primaryVariant = YellowPrimaryVariant,
+    secondary = Secondary,
     background = Dark.Background1,
     surface = Dark.TFBackground,
     onBackground = Dark.TFPrimary,
@@ -28,8 +28,8 @@ private val DarkColorPalette = darkColors(
 
 private val LightColorPalette = lightColors(
     primary = YellowPrimary,
-    primaryVariant = Purple700,
-    secondary = Teal200,
+    primaryVariant = YellowPrimaryVariant,
+    secondary = Secondary,
     background = Light.Background1,
     surface = Light.TFBackground,
     onBackground = Light.TFPrimary,
