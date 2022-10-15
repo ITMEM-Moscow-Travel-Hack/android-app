@@ -1,7 +1,8 @@
 package com.moscow.travel.hack.presentation.view
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -9,8 +10,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.moscow.travel.hack.presentation.theme.Background2
 import com.moscow.travel.hack.presentation.theme.Shapes
 import com.moscow.travel.hack.presentation.theme.TFBackground
 import com.moscow.travel.hack.presentation.theme.YellowPrimary
@@ -21,7 +23,7 @@ fun SexyTextField(
     modifier: Modifier = Modifier,
     placeholder: String = "",
     init: String = "",
-    icon: Int? = null,
+    icon: ImageVector? = null,
     onChange: (String) -> Unit = {},
 ) {
     val value = remember {
@@ -33,26 +35,26 @@ fun SexyTextField(
             value.value = it
             onChange(it)
         },
-        leadingIcon = {
+        trailingIcon = {
             if (icon != null) Icon(
-                painterResource(id = icon),
+                icon,
                 "icon",
-                modifier = Modifier.size(52.dp)
+                modifier = Modifier.size(48.dp)
             )
         },
         placeholder = { Text(placeholder) },
         shape = Shapes.large,
         modifier = modifier
-            .clip(Shapes.large)
-            .background(MaterialTheme.colors.TFBackground)
+            .clip(Shapes.large).border(2.5.dp, color = MaterialTheme.colors.Background2, MaterialTheme.shapes.large),
+        colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.TFBackground)
     )
 }
 
 @Composable
 fun SexyButton(
     modifier: Modifier = Modifier,
-    name: String = "",
-    icon: Int? = null,
+    name: String? = null,
+    icon: ImageVector? = null,
     onClick: () -> Unit = {},
     content: @Composable (() -> Unit)? = null
 ) {
@@ -60,7 +62,8 @@ fun SexyButton(
         onClick = onClick,
         shape = Shapes.large,
         modifier = modifier
-            .clip(Shapes.large),
+            .clip(Shapes.large)
+            .height(48.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = YellowPrimary)
         //.background(Color.Yellow)
     ) {
@@ -70,12 +73,14 @@ fun SexyButton(
             Row {
                 if (icon != null) {
                     Icon(
-                        painterResource(id = icon),
+                        icon,
                         "icon",
                         modifier = Modifier.size(56.dp)
                     )
                 }
-                Text(name, color = MaterialTheme.colors.onPrimary)
+                if (name != null) {
+                    Text(name, color = MaterialTheme.colors.onPrimary)
+                }
             }
         }
     }

@@ -1,8 +1,8 @@
 buildscript {
-    ext.compose_version = '1.1.1'
-    ext.compose_activity_version = '1.5.0'
-    ext.compose_navigation_version = '2.5.0'
-    ext.compose_viewmodel_version = '2.5.0'
+    ext.compose_version = '1.2.1'
+    ext.compose_activity_version = '1.6.0'
+    ext.compose_navigation_version = '2.5.2'
+    ext.compose_viewmodel_version = '2.5.1'
     ext.compose_constraint_version = '1.0.1'
     ext.compose_pager_version = '0.24.9-beta'
     ext.core_ktx_version = '1.7.0'
@@ -38,7 +38,7 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.2.1' apply false
     id 'com.android.library' version '7.2.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
 }
 
 task clean(type: Delete) {
