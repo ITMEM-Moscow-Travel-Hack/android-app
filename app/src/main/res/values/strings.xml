@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">russpASS</string>
+
+    // labels
+    <string name="registration_label">Зарегистрироваться</string>
+    <string name="have_an_account_label">Есть аккаунт?</string>
+    <string name="login_label">Войти</string>
+</resources>
