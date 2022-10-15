@@ -16,7 +16,10 @@ import com.moscow.travel.hack.presentation.theme.Shapes
 import com.moscow.travel.hack.presentation.theme.YellowPrimary
 
 @Composable
-fun SuggestionsScreen(onBackPressed: () -> Unit) {
+fun SuggestionsScreen(
+    onBackPressed: () -> Unit,
+    onStartClick: () -> Unit,
+) {
     val modifier = Modifier
         .fillMaxWidth(0.8f)
         .height(52.dp)
@@ -33,7 +36,9 @@ fun SuggestionsScreen(onBackPressed: () -> Unit) {
 //            modifier = modifier
 //        )
         SexyTextField(modifier, "Введите желаемый город")
-        SexyButton(modifier, "Поехали!")
+        SexyButton(modifier, "Поехали!") {
+            onStartClick()
+        }
         //CitySuggestions()
     }
 }
