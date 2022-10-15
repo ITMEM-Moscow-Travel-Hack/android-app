@@ -27,7 +27,6 @@ import com.moscow.travel.hack.presentation.view.TopAppBarNavButton
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalSwipeableCardApi::class)
 @Composable
 fun TinderScreen(
@@ -43,11 +42,15 @@ fun TinderScreen(
                     Text("Назад")
                 },
                 backgroundColor = MaterialTheme.colors.background,
-                navigationIcon = { TopAppBarNavButton { onBackPressed() } },
+                navigationIcon = { TopAppBarNavButton(onBackPressed) },
             )
         }
-    ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
             Box(
                 Modifier
                     .padding(24.dp)

@@ -34,7 +34,7 @@ fun WelcomeScreen(
             Image(
                 painterResource(R.drawable.ic_welcome),
                 contentDescription = null,
-                Modifier.padding(top = 100.dp)
+                Modifier.weight(1f)
             )
         }
         Column(

@@ -1,80 +1,106 @@
 package com.moscow.travel.hack.presentation.ui.greeting.recomendation
 
+import android.app.DatePickerDialog
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.moscow.travel.hack.domain.entity.cities
+import com.moscow.travel.hack.presentation.view.CityCard
 import com.moscow.travel.hack.presentation.view.SearchField
-import com.moscow.travel.hack.presentation.view.SexyButton
-import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun StartSearchScreen(
     onTinderClick: () -> Unit,
 ) {
-    val sheetState = rememberModalBottomSheetState(
-        initialValue = ModalBottomSheetValue.Hidden
-    )
-    val scope = rememberCoroutineScope()
-
     var text by remember { mutableStateOf("") }
+    var startDate by remember { mutableStateOf("") }
+    var endDate by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
-    ModalBottomSheetLayout(
-        sheetContent = {
-            BottomSheetSearch {
-                scope.launch {
-                    sheetState.hide()
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Card(modifier = Modifier
+                    .weight(1f)
+                    .clickable {
+                        val date = Date()
+                        val dialog = DatePickerDialog(
+                            context, { _, year: Int, month: Int, day: Int ->
+                                val date = Date(year, month, day)
+                                val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
+                                startDate = formatter.format(date)
+                            }, date.year, date.month, date.day
+                        )
+                        dialog.show()
+                    }) {
+                    Text(
+                        text = if (startDate == "") "Дата начала" else startDate,
+                        color = MaterialTheme.colors.onPrimary,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(10.dp)
+                    )
+                }
+                Card(modifier = Modifier
+                    .weight(1f)
+                    .clickable {
+                        val date = Date()
+                        val dialog = DatePickerDialog(
+                            context, { _, year: Int, month: Int, day: Int ->
+                                val date = Date(year, month, day)
+                                val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
+                                endDate = formatter.format(date)
+                            }, date.year, date.month, date.day
+                        )
+                        dialog.show()
+                    }) {
+                    Text(
+                        text = if (endDate == "") "Дата окончания" else endDate,
+                        color = MaterialTheme.colors.onPrimary,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(10.dp)
+                    )
                 }
             }
-        },
-        sheetState = sheetState
-    ) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            SexyButton(
-                onClick = onTinderClick,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 48.dp),
-                name = "Рекомендации"
-            )
-            SearchField(modifier = Modifier.fillMaxWidth(), text = text, onFilterClick = {
-                scope.launch {
-                    sheetState.show()
+            SearchField(modifier = Modifier.fillMaxWidth(),
+                text = text,
+                onSearchClick = {},
+                onType = { text = it })
+            LazyColumn {
+                items(cities) {
+                    CityCard(city = it, onCityClick = {})
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
-            }, onType = { text = it })
+            }
         }
     }
-}
-
-@Composable
-fun BottomSheetSearch(
-    onApplyClick: () -> Unit,
-) {
-    SexyButton(
-        onClick = onApplyClick,
-        modifier = Modifier
-        .fillMaxWidth()
-        .padding(horizontal = 32.dp)
-        .padding(vertical = 20.dp)
-        .height(48.dp),
-        name = "Применить"
-    )
 }

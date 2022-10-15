@@ -1,19 +1,15 @@
 package com.moscow.travel.hack.presentation.ui.main.suggestions
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.moscow.travel.hack.presentation.theme.TFBackground
-import com.moscow.travel.hack.presentation.theme.Shapes
-import com.moscow.travel.hack.presentation.theme.YellowPrimary
 import com.moscow.travel.hack.presentation.view.SexyButton
 import com.moscow.travel.hack.presentation.view.SexyTextField
 
@@ -38,9 +34,7 @@ fun SuggestionsScreen(
 //            modifier = modifier
 //        )
         SexyTextField(modifier, "Введите желаемый город")
-        SexyButton(modifier, "Поехали!") {
-            onStartClick()
-        }
+        SexyButton(modifier, "Поехали!", onClick = onStartClick)
         //CitySuggestions()
     }
 }
