@@ -43,7 +43,7 @@ fun PlaceCard(
     Card(
         modifier
             .clip(MaterialTheme.shapes.large)
-            .border(2.dp, MaterialTheme.colors.Background2, MaterialTheme.shapes.large)
+            .border(2.5.dp, MaterialTheme.colors.Background2, MaterialTheme.shapes.large)
             .background(MaterialTheme.colors.background)
             .clickable(enabled = onClick != null) {
                 onClick?.invoke(place.id)
@@ -94,7 +94,7 @@ fun PlaceCard(
                         .fillMaxWidth(0.35f)
                 )
             }
-            Divider(color = MaterialTheme.colors.Background2, thickness = 2.dp)
+            Divider(color = MaterialTheme.colors.Background2, thickness = 2.5.dp)
             Row(
                 Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.SpaceEvenly,

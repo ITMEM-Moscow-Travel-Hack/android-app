@@ -39,7 +39,7 @@ fun SexyTextField(
             if (icon != null) Icon(
                 icon,
                 "icon",
-                modifier = Modifier.size(48.dp)
+                modifier = Modifier.size(26.dp)
             )
         },
         placeholder = { Text(placeholder) },
