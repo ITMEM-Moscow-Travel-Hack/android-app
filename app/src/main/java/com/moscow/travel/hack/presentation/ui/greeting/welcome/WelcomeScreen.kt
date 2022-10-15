@@ -1,15 +1,7 @@
-
 package com.moscow.travel.hack.presentation.ui.greeting.welcome
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.moscow.travel.hack.R
+import com.moscow.travel.hack.presentation.view.SexyButton
 
 @Composable
 fun WelcomeScreen(
@@ -48,21 +41,17 @@ fun WelcomeScreen(
             Modifier.align(Alignment.BottomCenter),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(
+            SexyButton(
                 onClick = {
                     onContinueClick()
                 },
-                Modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
                     .padding(bottom = 8.dp)
-                    .height(48.dp)
-            ) {
-                Text(
-//                        stringResource(R.string.continue_label)
-                    "Поехали!"
-                )
-            }
+                    .height(48.dp),
+                name = "Поехали!"
+            )
             Spacer(modifier = Modifier.height(32.dp))
         }
     }

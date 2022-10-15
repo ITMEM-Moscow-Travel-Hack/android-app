@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.moscow.travel.hack.presentation.view.SearchField
+import com.moscow.travel.hack.presentation.view.SexyButton
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -47,17 +48,13 @@ fun StartSearchScreen(
         sheetState = sheetState
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-            Button(
+            SexyButton(
                 onClick = onTinderClick,
-                Modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 48.dp),
-            ) {
-                Text(
-                    "Рекомендации",
-                    modifier = Modifier,
-                )
-            }
+                name = "Рекомендации"
+            )
             SearchField(modifier = Modifier.fillMaxWidth(), text = text, onFilterClick = {
                 scope.launch {
                     sheetState.show()
@@ -71,16 +68,13 @@ fun StartSearchScreen(
 fun BottomSheetSearch(
     onApplyClick: () -> Unit,
 ) {
-    Button(
+    SexyButton(
         onClick = onApplyClick,
-        Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 32.dp)
-            .padding(vertical = 20.dp)
-            .height(48.dp)
-    ) {
-        Text(
-            "Применить"
-        )
-    }
+        modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 32.dp)
+        .padding(vertical = 20.dp)
+        .height(48.dp),
+        name = "Применить"
+    )
 }
