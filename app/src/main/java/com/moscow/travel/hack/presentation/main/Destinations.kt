@@ -31,6 +31,7 @@ enum class RecomendationsSections(
     START_SEARCH("$RECOMENDATIONS/start_search"),
     TINDER("$RECOMENDATIONS/main"),
     HOTELS("$RECOMENDATIONS/hotels"),
+    SUMMARY("$RECOMENDATIONS/summary"),
 }
 
 enum class MainSections(

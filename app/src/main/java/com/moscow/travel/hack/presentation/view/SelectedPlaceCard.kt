@@ -26,12 +26,12 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.moscow.travel.hack.R
-import com.moscow.travel.hack.domain.entity.City
+import com.moscow.travel.hack.domain.entity.Place
 import com.moscow.travel.hack.presentation.theme.Background2
 
 @Composable
-fun CityCard(
-    city: City,
+fun SelectedPlaceCard(
+    place: Place,
     modifier: Modifier = Modifier,
     onCityClick: (Int) -> Unit,
 ) {
@@ -43,7 +43,7 @@ fun CityCard(
                 color = MaterialTheme.colors.Background2,
                 shape = MaterialTheme.shapes.large
             )
-            .clickable { onCityClick(city.id) }) {
+            .clickable { onCityClick(place.id) }) {
         Row(
             modifier
                 .fillMaxWidth()
@@ -51,7 +51,7 @@ fun CityCard(
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(city.photoUri)
+                    .data(place.photoUri)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(R.drawable.ic_placeholder),
@@ -67,14 +67,14 @@ fun CityCard(
                 modifier = Modifier.height(90.dp)
             ) {
                 Text(
-                    text = city.name,
+                    text = place.name,
                     color = MaterialTheme.colors.onPrimary,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(
-                    text = city.places.joinToString(", "),
+                    text = "${place.price} руб",
                     color = MaterialTheme.colors.onPrimary,
                     fontSize = 16.sp
                 )
