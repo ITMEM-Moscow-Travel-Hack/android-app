@@ -28,7 +28,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.moscow.travel.hack.BuildConfig
-import com.moscow.travel.hack.domain.entity.hotels
 import com.moscow.travel.hack.domain.entity.places
 import com.moscow.travel.hack.presentation.view.HotelCard
 import com.moscow.travel.hack.presentation.view.SelectedPlaceCard
@@ -59,6 +58,9 @@ class MyCloudPaymentsIntentSender : ActivityResultContract<PaymentConfiguration,
 
 @Composable
 fun SummaryScreen(
+    viewModel: RecommendationsViewModel,
+    onChooseHotelClick: () -> Unit,
+    onAddPlaceClick: () -> Unit,
 ) {
     val context = LocalContext.current
     val launcher = rememberLauncherForActivityResult(MyCloudPaymentsIntentSender()) {
@@ -90,9 +92,11 @@ fun SummaryScreen(
         }
     }
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(8.dp)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp)
+    ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -105,7 +109,17 @@ fun SummaryScreen(
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                HotelCard(hotel = hotels[0], onHotelClick = {})
+                if (viewModel.selectedHotel != null) {
+                    HotelCard(hotel = viewModel.selectedHotel!!, onHotelClick = {})
+                } else {
+                    TextButton(
+                        onClick = { onChooseHotelClick() },
+                        modifier = Modifier
+                    ) {
+                        Text("Отель не выбран.", color = Color.Black)
+                        Text("Выбрать?", color = MaterialTheme.colors.primary)
+                    }
+                }
                 Spacer(modifier = Modifier.height(16.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),

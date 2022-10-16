@@ -32,11 +32,10 @@ import java.util.Locale
 
 @Composable
 fun StartSearchScreen(
+    viewModel: RecommendationsViewModel,
     onNext: () -> Unit,
 ) {
     var text by remember { mutableStateOf("") }
-    var startDate by remember { mutableStateOf("") }
-    var endDate by remember { mutableStateOf("") }
     val context = LocalContext.current
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -50,28 +49,36 @@ fun StartSearchScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                SexyButton(Modifier.width(160.dp), onClick = {
-                    val date = LocalDate.now()
-                    val dialog = DatePickerDialog(
-                        context, { _, year: Int, month: Int, day: Int ->
-                            val date = Date(year, month, day)
-                            val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
-                            startDate = formatter.format(date)
-                        }, date.year, date.month.value, date.dayOfMonth
-                    )
-                    dialog.show()
-                }, name = if (startDate == "") "Дата начала" else startDate)
-                SexyButton(Modifier.width(160.dp), onClick = {
-                    val date = LocalDate.now()
-                    val dialog = DatePickerDialog(
-                        context, { _, year: Int, month: Int, day: Int ->
-                            val date = Date(year, month, day)
-                            val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
-                            endDate = formatter.format(date)
-                        }, date.year, date.month.value, date.dayOfMonth
-                    )
-                    dialog.show()
-                }, name = if (endDate == "") "Дата окончания" else endDate)
+                SexyButton(
+                    Modifier.width(160.dp),
+                    onClick = {
+                        val date = LocalDate.now()
+                        val dialog = DatePickerDialog(
+                            context, { _, year: Int, month: Int, day: Int ->
+                                viewModel.startDate = Date(year, month, day)
+                            }, date.year, date.month.value, date.dayOfMonth
+                        )
+                        dialog.show()
+                    },
+                    name = if (viewModel.startDate == null) "Дата начала" else SimpleDateFormat(
+                        "dd MMMM",
+                        Locale.getDefault()
+                    ).format(viewModel.startDate!!)
+                )
+                SexyButton(
+                    Modifier.width(160.dp), onClick = {
+                        val date = LocalDate.now()
+                        val dialog = DatePickerDialog(
+                            context, { _, year: Int, month: Int, day: Int ->
+                                viewModel.endDate = Date(year, month, day)
+                            }, date.year, date.month.value, date.dayOfMonth
+                        )
+                        dialog.show()
+                    }, name = if (viewModel.endDate == null) "Дата окончания" else SimpleDateFormat(
+                        "dd MMMM",
+                        Locale.getDefault()
+                    ).format(viewModel.endDate!!)
+                )
             }
             SexyTextField(
                 modifier = Modifier.fillMaxWidth(),
@@ -79,7 +86,8 @@ fun StartSearchScreen(
                 onChange = { text = it })
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(cities) {
-                    CityCard(city = it, onCityClick = {
+                    CityCard(city = it, onCityClick = { _ ->
+                        viewModel.selectedCity = it
                         onNext()
                     })
                 }

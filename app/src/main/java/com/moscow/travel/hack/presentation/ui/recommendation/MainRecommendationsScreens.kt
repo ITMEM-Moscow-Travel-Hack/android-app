@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.moscow.travel.hack.presentation.view.StepsProgressBar
 import com.moscow.travel.hack.presentation.view.TopAppBarNavButton
 
@@ -27,11 +28,11 @@ fun MainRecommendationsScreen(
 ) {
     val currentStep = remember { mutableStateOf(0) }
     val scaffoldState = rememberScaffoldState()
-
     val handleBackPress = {
         if (currentStep.value == 0) onBackPressed()
         else currentStep.value--
     }
+    val viewModel = hiltViewModel<RecommendationsViewModel>()
     BackHandler {
         handleBackPress()
     }
@@ -62,8 +63,14 @@ fun MainRecommendationsScreen(
                                 TextButton(
                                     onClick = {
                                         when (currentStep.value) {
-                                            2 -> currentStep.value = 3
-                                            3 -> currentStep.value = 0
+                                            2 -> {
+                                                viewModel.selectedHotel = null
+                                                currentStep.value = 3
+                                            }
+                                            3 -> {
+                                                viewModel.resetAll()
+                                                currentStep.value = 0
+                                            }
                                         }
                                     },
                                     modifier = Modifier
@@ -83,7 +90,7 @@ fun MainRecommendationsScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            CurrentStepScreen(stepNumber = currentStep.value) { currentStep.value = it }
+            CurrentStepScreen(stepNumber = currentStep.value, viewModel) { currentStep.value = it }
         }
     }
 }
@@ -115,18 +122,23 @@ fun ButtonText(stepNumber: Int) {
 @Composable
 fun CurrentStepScreen(
     stepNumber: Int,
+    viewModel: RecommendationsViewModel,
     onChangeStep: (Int) -> Unit,
 ) {
     when (stepNumber) {
-        0 -> StartSearchScreen(onNext = {
+        0 -> StartSearchScreen(viewModel, onNext = {
             onChangeStep(1)
         })
-        1 -> TinderScreen(onNextStepClick = {
+        1 -> TinderScreen(viewModel, onNextStepClick = {
             onChangeStep(2)
         })
-        2 -> HotelsScreen(onNextStepClick = {
+        2 -> HotelsScreen(viewModel, onNextStepClick = {
             onChangeStep(3)
         })
-        3 -> SummaryScreen()
+        3 -> SummaryScreen(viewModel, onChooseHotelClick = {
+            onChangeStep(2)
+        }, onAddPlaceClick = {
+            onChangeStep(1)
+        })
     }
 }
