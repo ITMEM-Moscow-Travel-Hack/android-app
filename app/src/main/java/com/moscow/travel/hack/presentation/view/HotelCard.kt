@@ -26,6 +26,7 @@ import com.moscow.travel.hack.presentation.theme.Background2
 @Composable
 fun HotelCard(
     hotel: Hotel,
+    days: Int = 0,
     modifier: Modifier = Modifier,
     onHotelClick: (Int) -> Unit,
 ) {

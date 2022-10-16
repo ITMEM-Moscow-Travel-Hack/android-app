@@ -10,8 +10,6 @@ import com.moscow.travel.hack.presentation.ui.greeting.onboarding.OnboardingScre
 import com.moscow.travel.hack.presentation.ui.greeting.recommendation.MainRecommendationsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.welcome.WelcomeScreen
 import com.moscow.travel.hack.presentation.ui.main.main.MainScreen
-import com.moscow.travel.hack.presentation.ui.main.suggestions.SuggestionsScreen
-import timber.log.Timber
 
 @Composable
 fun MTHNavHost(
@@ -36,16 +34,6 @@ fun MTHNavHost(
         composable(MainSections.MAIN.route) {
             MainScreen(
                 onSuggestionsClick = {
-                    Timber.e("GOING SUGGESTIONS")
-                    navController.navigate(MainSections.SUGGESTIONS.route)
-                }
-            )
-        }
-        composable(MainSections.SUGGESTIONS.route) {
-            SuggestionsScreen(
-                onBackPressed = { navController.navigateUp() },
-                onStartClick = {
-                    Timber.e("START SEARCH")
                     navController.navigate(RecommendationsSections.MAIN.route)
                 }
             )
