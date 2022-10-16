@@ -60,47 +60,6 @@ fun StartSearchScreen(
                     )
                     dialog.show()
                 }, name = if (endDate == "") "Дата окончания" else endDate)
-//                Card(modifier = Modifier
-//                    .weight(1f)
-//                    .clickable {
-//                        val date = LocalDate.now()
-//                        val dialog = DatePickerDialog(
-//                            context, { _, year: Int, month: Int, day: Int ->
-//                                val date = Date(year, month, day)
-//                                val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
-//                                startDate = formatter.format(date)
-//                            }, date.year, date.month.value, date.dayOfMonth
-//                        )
-//                        dialog.show()
-//                    }) {
-//                    Text(
-//                        text = if (startDate == "") "Дата начала" else startDate,
-//                        color = MaterialTheme.colors.onPrimary,
-//                        fontSize = 22.sp,
-//                        fontWeight = FontWeight.Bold,
-//                        modifier = Modifier.padding(10.dp)
-//                    )
-//                }
-//                Card(modifier = Modifier
-//                    .weight(1f)
-//                    .clickable {
-//                        val date = LocalDate.now()
-//                        val dialog = DatePickerDialog(
-//                            context, { _, year: Int, month: Int, day: Int ->
-//                                val date = Date(year, month, day)
-//                                val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
-//                                endDate = formatter.format(date)
-//                            }, date.year, date.month.value, date.dayOfMonth
-//                        )
-//                        dialog.show()
-//                    }) {
-//                    Text(
-//                        text = if (endDate == "") "Дата окончания" else endDate,
-//                        color = MaterialTheme.colors.onPrimary,
-//                        fontSize = 22.sp,
-//                        fontWeight = FontWeight.Bold,
-//                        modifier = Modifier.padding(10.dp)
-//                    )
             }
             SexyTextField(modifier = Modifier.fillMaxWidth(), icon = Icons.Rounded.Search)
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {

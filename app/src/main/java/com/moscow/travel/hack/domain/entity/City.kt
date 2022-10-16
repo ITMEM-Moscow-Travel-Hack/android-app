@@ -46,6 +46,18 @@ val cities = listOf(
     ),
     City(
         6,
+        "Чеченская Республика",
+        "https://cms.dev01.russpass.dev/v1/file/6135d13da40bb9001187e5f4/300",
+        places = listOf("Озеро Кезенойам", "Мечеть «Сердце Чечни»", "Цой-Педе")
+    ),
+    City(
+        7,
+        "Владимирская область",
+        "https://cms.dev01.russpass.dev/v1/file/613511f9a40bb9001187e415/300",
+        places = listOf("Золотые ворота", "Суздальский кремль", "Торговые ряды")
+    ),
+    City(
+        8,
         "Регионы",
         "https://cms.dev01.russpass.dev/v1/file/611f7101f2d54e00185e345b/160/160",
         places = listOf("Показать все")

@@ -1,12 +1,9 @@
 package com.moscow.travel.hack.presentation.view
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,18 +14,16 @@ import androidx.compose.ui.unit.dp
 fun CircleButton(
     onClick: () -> Unit,
     icon: ImageVector,
+    modifier: Modifier = Modifier
 ) {
     IconButton(
-        modifier = Modifier
+        modifier = modifier
             .clip(CircleShape)
-            .background(MaterialTheme.colors.primary)
-            .size(72.dp)
-            .border(2.dp, MaterialTheme.colors.primary, CircleShape),
+            .size(72.dp),
         onClick = onClick
     ) {
         Icon(
             icon, null,
-            tint = MaterialTheme.colors.onPrimary
         )
     }
 }

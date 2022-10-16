@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,7 +35,7 @@ import com.moscow.travel.hack.presentation.theme.Background2
 fun SelectedPlaceCard(
     place: Place,
     modifier: Modifier = Modifier,
-    onCityClick: (Int) -> Unit,
+    onPlaceClick: (Int) -> Unit,
 ) {
     Card(
         modifier = Modifier
@@ -43,7 +45,7 @@ fun SelectedPlaceCard(
                 color = MaterialTheme.colors.Background2,
                 shape = MaterialTheme.shapes.large
             )
-            .clickable { onCityClick(place.id) }) {
+            .clickable { onPlaceClick(place.id) }) {
         Row(
             modifier
                 .fillMaxWidth()
@@ -79,6 +81,11 @@ fun SelectedPlaceCard(
                     fontSize = 16.sp
                 )
             }
+            Spacer(modifier = Modifier.weight(1f))
+            CircleButton(
+                onClick = { },
+                icon = Icons.Default.Close,
+            )
         }
     }
 }
