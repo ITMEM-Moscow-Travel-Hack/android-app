@@ -34,6 +34,5 @@ enum class RecommendationsSections(
 enum class MainSections(
     val route: String
 ) {
-    MAIN("$MAIN/main"),
-    SUGGESTIONS("$MAIN/suggestions")
+    MAIN("$MAIN/main")
 }

@@ -5,13 +5,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.moscow.travel.hack.presentation.ui.interests.InterestsScreen
+import com.moscow.travel.hack.presentation.ui.greeting.interests.InterestsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.onboarding.OnboardingScreen
-import com.moscow.travel.hack.presentation.ui.recommendation.MainRecommendationsScreen
+import com.moscow.travel.hack.presentation.ui.greeting.recommendation.MainRecommendationsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.welcome.WelcomeScreen
-import com.moscow.travel.hack.presentation.ui.main.MainScreen
-import com.moscow.travel.hack.presentation.ui.suggestions.SuggestionsScreen
-import timber.log.Timber
+import com.moscow.travel.hack.presentation.ui.main.main.MainScreen
 
 @Composable
 fun MTHNavHost(
@@ -36,16 +34,6 @@ fun MTHNavHost(
         composable(MainSections.MAIN.route) {
             MainScreen(
                 onSuggestionsClick = {
-                    Timber.e("GOING SUGGESTIONS")
-                    navController.navigate(MainSections.SUGGESTIONS.route)
-                }
-            )
-        }
-        composable(MainSections.SUGGESTIONS.route) {
-            SuggestionsScreen(
-                onBackPressed = { navController.navigateUp() },
-                onStartClick = {
-                    Timber.e("START SEARCH")
                     navController.navigate(RecommendationsSections.MAIN.route)
                 }
             )
