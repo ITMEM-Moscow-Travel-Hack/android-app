@@ -16,17 +16,30 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun StepsProgressBar(modifier: Modifier = Modifier, numberOfSteps: Int, currentStep: Int) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        for (step in 0 until numberOfSteps) {
-            Step(
-                modifier = Modifier.weight(1F),
-                isCompete = step < currentStep,
-                isCurrent = step == currentStep,
-                step != 0
+    Box(modifier = modifier) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            val color = if (currentStep > 0) MaterialTheme.colors.primary else Color.LightGray
+            Canvas(modifier = Modifier
+                .size(15.dp)
+                .border(
+                    shape = CircleShape,
+                    width = 2.dp,
+                    color = MaterialTheme.colors.primary
+                ),
+                onDraw = {
+                    drawCircle(color)
+                }
             )
+            for (step in 1 until numberOfSteps) {
+                Step(
+                    modifier = Modifier.weight(1F),
+                    isCompete = step < currentStep,
+                    isCurrent = step == currentStep,
+                    step != 0
+                )
+            }
         }
     }
 }

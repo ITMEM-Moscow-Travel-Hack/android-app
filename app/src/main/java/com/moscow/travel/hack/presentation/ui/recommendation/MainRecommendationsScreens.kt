@@ -1,23 +1,16 @@
 package com.moscow.travel.hack.presentation.ui.recommendation
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.moscow.travel.hack.presentation.theme.Background2
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.moscow.travel.hack.presentation.view.StepsProgressBar
 import com.moscow.travel.hack.presentation.view.TopAppBarNavButton
@@ -40,26 +33,31 @@ fun MainRecommendationsScreen(
         scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
+                modifier = Modifier.height(100.dp),
                 title = {
-                    Column(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 12.dp)) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             TopAppBarNavButton { handleBackPress() }
+                            Spacer(modifier = Modifier.size(8.dp))
                             Title(stepNumber = currentStep.value)
                         }
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically
+                        Divider(thickness = 2.5.dp, color = MaterialTheme.colors.Background2)
+                        Box(
+                            modifier = Modifier.fillMaxSize()
                         ) {
                             StepsProgressBar(
-                                modifier = Modifier.weight(1f),
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .fillMaxWidth(0.5f),
                                 numberOfSteps = 4,
                                 currentStep = currentStep.value
                             )
-                            if (currentStep.value in listOf(2, 3)) {
+                            if (currentStep.value in 2..3) {
                                 TextButton(
                                     onClick = {
                                         when (currentStep.value) {
@@ -73,7 +71,7 @@ fun MainRecommendationsScreen(
                                             }
                                         }
                                     },
-                                    modifier = Modifier
+                                    modifier = Modifier.align(Alignment.CenterEnd)
                                 ) {
                                     ButtonText(stepNumber = currentStep.value)
                                 }
@@ -83,7 +81,8 @@ fun MainRecommendationsScreen(
                 },
                 backgroundColor = MaterialTheme.colors.background,
             )
-        }
+        },
+
     ) { innerPadding ->
         Column(
             modifier = Modifier
