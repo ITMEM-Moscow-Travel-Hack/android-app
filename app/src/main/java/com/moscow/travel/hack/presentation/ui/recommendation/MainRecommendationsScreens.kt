@@ -38,12 +38,26 @@ fun MainRecommendationsScreen(
                         .fillMaxWidth()
                         .padding(end = 12.dp)) {
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().height(49.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             TopAppBarNavButton { handleBackPress() }
                             Spacer(modifier = Modifier.size(8.dp))
                             Title(stepNumber = currentStep.value)
+                            Spacer(modifier = Modifier.weight(1f))
+                            if (currentStep.value in 2..3) {
+                                TextButton(
+                                    onClick = {
+                                        when (currentStep.value) {
+                                            2 -> currentStep.value = 3
+                                            3 -> currentStep.value = 0
+                                        }
+                                    },
+                                    modifier = Modifier.height(44.dp)
+                                ) {
+                                    ButtonText(stepNumber = currentStep.value)
+                                }
+                            }
                         }
                         Divider(thickness = 2.5.dp, color = MaterialTheme.colors.Background2)
                         Box(
@@ -56,19 +70,6 @@ fun MainRecommendationsScreen(
                                 numberOfSteps = 4,
                                 currentStep = currentStep.value
                             )
-                            if (currentStep.value in 2..3) {
-                                TextButton(
-                                    onClick = {
-                                        when (currentStep.value) {
-                                            2 -> currentStep.value = 3
-                                            3 -> currentStep.value = 0
-                                        }
-                                    },
-                                    modifier = Modifier.align(Alignment.CenterEnd)
-                                ) {
-                                    ButtonText(stepNumber = currentStep.value)
-                                }
-                            }
                         }
                     }
                 },
@@ -91,10 +92,10 @@ fun MainRecommendationsScreen(
 fun Title(stepNumber: Int) {
     Text(
         when (stepNumber) {
-            0 -> "Выберите даты и город поездки"
+            0 -> "Выберите дату и город"
             1 -> "Выберите интересные места"
             2 -> "Выберите отель"
-            3 -> "Проверьте заказ и произведите оплату"
+            3 -> "Ваша поездка"
             else -> ""
         }, color = Color.Black
     )

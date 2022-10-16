@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.moscow.travel.hack.presentation.theme.Background2
 
 @Composable
 fun StepsProgressBar(modifier: Modifier = Modifier, numberOfSteps: Int, currentStep: Int) {
@@ -20,7 +21,7 @@ fun StepsProgressBar(modifier: Modifier = Modifier, numberOfSteps: Int, currentS
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val color = if (currentStep > 0) MaterialTheme.colors.primary else Color.LightGray
+            val color = if (currentStep > 0) MaterialTheme.colors.primary else MaterialTheme.colors.Background2
             Canvas(modifier = Modifier
                 .size(15.dp)
                 .border(
@@ -51,8 +52,8 @@ fun Step(
     isCurrent: Boolean,
     showDivider: Boolean
 ) {
-    val color = if (isCompete || isCurrent) MaterialTheme.colors.primary else Color.LightGray
-    val innerCircleColor = if (isCompete) MaterialTheme.colors.primary else Color.LightGray
+    val color = if (isCompete || isCurrent) MaterialTheme.colors.primary else MaterialTheme.colors.Background2
+    val innerCircleColor = if (isCompete) MaterialTheme.colors.primary else MaterialTheme.colors.Background2
 
     Box(modifier = modifier) {
         if (showDivider) {
