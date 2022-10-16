@@ -64,7 +64,7 @@ fun PlaceCard(
                         .wrapContentHeight()
                         .fillMaxHeight(0.85f)
                         .drawWithContent {
-                            val colors = listOf(Color.Black, Color.Transparent)
+                            val colors = listOf(Color.Black, Color.Black, Color.Transparent)
                             drawContent()
                             drawRect(
                                 brush = Brush.verticalGradient(colors),
