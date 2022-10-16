@@ -4,6 +4,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -39,8 +40,7 @@ fun HotelCard(
         )
         .clickable { onHotelClick(hotel.id) }) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            modifier = Modifier.fillMaxWidth()
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
@@ -54,8 +54,8 @@ fun HotelCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(220.dp)
-                    .clip(MaterialTheme.shapes.large)
             )
+            Divider(thickness = 2.dp, color = MaterialTheme.colors.Background2)
             Column(Modifier.padding(8.dp)) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
