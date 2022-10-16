@@ -24,7 +24,7 @@ class AppState(
 
     @Composable
     fun getStartDestination(): String {
-//        return Gree tingSections.WELCOME.route
+//        return GreetingSections.WELCOME.route
         return RecommendationsSections.MAIN.route
     }
 
