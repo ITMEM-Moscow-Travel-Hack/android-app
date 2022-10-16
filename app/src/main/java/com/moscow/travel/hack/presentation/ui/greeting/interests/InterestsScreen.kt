@@ -1,7 +1,11 @@
 package com.moscow.travel.hack.presentation.ui.greeting.interests
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -35,7 +39,9 @@ fun InterestsScreen(
             InterestItem("Музыка", R.drawable.ic_music),
         )
     }
-    Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(24.dp)) {
         Text(
             "Выберите интересные вам темы",
             fontSize = 22.sp,
@@ -52,7 +58,10 @@ fun InterestsScreen(
             }
         }
         Spacer(modifier = Modifier.weight(1f))
-        Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
             SexyButton(
                 onClick = onSaveClick,
                 modifier = Modifier

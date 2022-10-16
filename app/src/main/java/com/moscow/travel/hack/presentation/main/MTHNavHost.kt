@@ -7,10 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.moscow.travel.hack.presentation.ui.greeting.interests.InterestsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.onboarding.OnboardingScreen
-import com.moscow.travel.hack.presentation.ui.greeting.recomendation.HotelsScreen
-import com.moscow.travel.hack.presentation.ui.greeting.recomendation.StartSearchScreen
-import com.moscow.travel.hack.presentation.ui.greeting.recomendation.SummaryScreen
-import com.moscow.travel.hack.presentation.ui.greeting.recomendation.TinderScreen
+import com.moscow.travel.hack.presentation.ui.greeting.recommendation.MainRecommendationsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.welcome.WelcomeScreen
 import com.moscow.travel.hack.presentation.ui.main.main.MainScreen
 import com.moscow.travel.hack.presentation.ui.main.suggestions.SuggestionsScreen
@@ -36,16 +33,6 @@ fun MTHNavHost(
         composable(InterestsSections.MAIN.route) {
             InterestsScreen(onSaveClick = { navController.navigate(MainSections.MAIN.route) })
         }
-        composable(RecomendationsSections.START_SEARCH.route) {
-            StartSearchScreen(
-                onTinderClick = { navController.navigate(RecomendationsSections.TINDER.route) }
-            )
-        }
-        composable(RecomendationsSections.TINDER.route) {
-            TinderScreen(
-                onBackPressed = { navController.navigateUp() },
-            )
-        }
         composable(MainSections.MAIN.route) {
             MainScreen(
                 onSuggestionsClick = {
@@ -59,17 +46,12 @@ fun MTHNavHost(
                 onBackPressed = { navController.navigateUp() },
                 onStartClick = {
                     Timber.e("START SEARCH")
-                    navController.navigate(RecomendationsSections.START_SEARCH.route)
+                    navController.navigate(RecommendationsSections.MAIN.route)
                 }
             )
         }
-        composable(RecomendationsSections.HOTELS.route) {
-            HotelsScreen(
-            )
-        }
-        composable(RecomendationsSections.SUMMARY.route) {
-            SummaryScreen(
-            )
+        composable(RecommendationsSections.MAIN.route) {
+            MainRecommendationsScreen()
         }
     }
 }
