@@ -1,4 +1,4 @@
-package com.moscow.travel.hack.presentation.ui.main.suggestions
+package com.moscow.travel.hack.presentation.ui.suggestions
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.moscow.travel.hack.presentation.ui.greeting.recommendation
+package com.moscow.travel.hack.presentation.ui.recommendation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

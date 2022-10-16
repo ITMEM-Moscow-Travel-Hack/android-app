@@ -1,4 +1,4 @@
-package com.moscow.travel.hack.presentation.ui.main.main
+package com.moscow.travel.hack.presentation.ui.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

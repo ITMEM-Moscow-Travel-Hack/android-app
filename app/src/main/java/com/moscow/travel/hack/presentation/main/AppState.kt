@@ -9,7 +9,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.moscow.travel.hack.R
 import com.moscow.travel.hack.presentation.main.MainDestinations.GREETING
-import com.moscow.travel.hack.presentation.main.MainDestinations.MAIN
 
 class AppState(
     val scaffoldState: ScaffoldState,
@@ -25,7 +24,7 @@ class AppState(
 
     @Composable
     fun getStartDestination(): String {
-//        return MainSections.MAIN.route
+//        return GreetingSections.WELCOME.route
         return RecommendationsSections.MAIN.route
     }
 

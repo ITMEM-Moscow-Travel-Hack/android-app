@@ -1,4 +1,4 @@
-package com.moscow.travel.hack.presentation.ui.greeting.interests
+package com.moscow.travel.hack.presentation.ui.interests
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
