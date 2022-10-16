@@ -34,18 +34,14 @@ fun AuthButtons(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(
+        SexyButton(
+            name = stringResource(mainActionText),
             onClick = { onMainClick() },
-            buttonModifier
+            modifier = buttonModifier
                 .fillMaxWidth()
                 .padding(horizontal = 48.dp),
             enabled = enabledMainButton
-        ) {
-            Text(
-                stringResource(mainActionText),
-                modifier = Modifier,
-            )
-        }
+        )
         Spacer(Modifier.height(16.dp))
         if (!onlyMainButton) {
             TextButton(

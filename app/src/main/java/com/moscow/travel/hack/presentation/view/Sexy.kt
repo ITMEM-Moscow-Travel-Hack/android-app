@@ -68,12 +68,12 @@ fun SexyButton(
 ) {
     Button(
         onClick = onClick,
+        enabled = enabled,
         shape = Shapes.large,
         modifier = modifier
             .clip(Shapes.large)
             .height(48.dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = YellowPrimary),
-        enabled = enabled,
         //.background(Color.Yellow)
     ) {
         if (content != null) {
