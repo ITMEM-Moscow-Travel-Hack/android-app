@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -33,7 +32,7 @@ import com.moscow.travel.hack.presentation.theme.Background2
 fun CityCard(
     city: City,
     modifier: Modifier = Modifier,
-    onCityClick: (Int) -> Unit,
+    onCityClick: (String) -> Unit,
 ) {
     Card(
         modifier = Modifier
@@ -72,9 +71,10 @@ fun CityCard(
                 )
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(
-                    text = city.places.joinToString(", "),
+                    text = city.description,
                     color = MaterialTheme.colors.onPrimary,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    maxLines = 3,
                 )
             }
         }

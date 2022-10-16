@@ -36,7 +36,7 @@ import com.moscow.travel.hack.presentation.theme.Background2
 fun PlaceCard(
     modifier: Modifier,
     place: Place,
-    onClick: ((placeId: Int) -> Unit)? = null,
+    onClick: ((placeId: String) -> Unit)? = null,
     onSkip: () -> Unit,
     onFav: () -> Unit
 ) {
