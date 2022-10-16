@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.moscow.travel.hack.presentation.theme.Background2
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.moscow.travel.hack.presentation.theme.Background2
 import com.moscow.travel.hack.presentation.view.StepsProgressBar
 import com.moscow.travel.hack.presentation.view.TopAppBarNavButton
 
@@ -35,11 +35,15 @@ fun MainRecommendationsScreen(
             TopAppBar(
                 modifier = Modifier.height(100.dp),
                 title = {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 12.dp)) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = 12.dp)
+                    ) {
                         Row(
-                            modifier = Modifier.fillMaxWidth().height(49.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(49.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             TopAppBarNavButton { handleBackPress() }
@@ -50,8 +54,14 @@ fun MainRecommendationsScreen(
                                 TextButton(
                                     onClick = {
                                         when (currentStep.value) {
-                                            2 -> currentStep.value = 3
-                                            3 -> currentStep.value = 0
+                                            2 -> {
+                                                viewModel.selectedHotel = null
+                                                currentStep.value = 3
+                                            }
+                                            3 -> {
+                                                viewModel.resetAll()
+                                                currentStep.value = 0
+                                            }
                                         }
                                     },
                                     modifier = Modifier.height(44.dp)
@@ -71,25 +81,6 @@ fun MainRecommendationsScreen(
                                 numberOfSteps = 4,
                                 currentStep = currentStep.value
                             )
-                            if (currentStep.value in 2..3) {
-                                TextButton(
-                                    onClick = {
-                                        when (currentStep.value) {
-                                            2 -> {
-                                                viewModel.selectedHotel = null
-                                                currentStep.value = 3
-                                            }
-                                            3 -> {
-                                                viewModel.resetAll()
-                                                currentStep.value = 0
-                                            }
-                                        }
-                                    },
-                                    modifier = Modifier.align(Alignment.CenterEnd)
-                                ) {
-                                    ButtonText(stepNumber = currentStep.value)
-                                }
-                            }
                         }
                     }
                 },
@@ -97,7 +88,7 @@ fun MainRecommendationsScreen(
             )
         },
 
-    ) { innerPadding ->
+        ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -112,7 +103,7 @@ fun MainRecommendationsScreen(
 fun Title(stepNumber: Int) {
     Text(
         when (stepNumber) {
-            0 -> "Выберите дату и город"
+            0 -> "Выберите дату и направление"
             1 -> "Выберите интересные места"
             2 -> "Выберите отель"
             3 -> "Ваша поездка"
