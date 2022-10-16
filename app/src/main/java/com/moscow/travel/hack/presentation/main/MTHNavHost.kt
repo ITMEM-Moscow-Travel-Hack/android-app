@@ -51,7 +51,9 @@ fun MTHNavHost(
             )
         }
         composable(RecommendationsSections.MAIN.route) {
-            MainRecommendationsScreen()
+            MainRecommendationsScreen(
+                onBackPressed = { navController.navigateUp() }
+            )
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.moscow.travel.hack.presentation.ui.greeting.recommendation
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -26,7 +25,6 @@ import com.moscow.travel.hack.presentation.view.SexyTextField
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalSwipeableCardApi::class)
 @Composable
 fun TinderScreen(
