@@ -1,4 +1,4 @@
-package com.moscow.travel.hack.presentation.ui.greeting.recomendation
+package com.moscow.travel.hack.presentation.ui.greeting.recommendation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
@@ -30,7 +30,7 @@ import timber.log.Timber
 @OptIn(ExperimentalSwipeableCardApi::class)
 @Composable
 fun TinderScreen(
-    onBackPressed: () -> Unit,
+    onNextStepClick: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val states = places.reversed().map { it to rememberSwipeableCardState() }
@@ -103,7 +103,11 @@ fun TinderScreen(
             textAlign = TextAlign.Center
         )
 //        Spacer(modifier = Modifier.height(16.dp))
-        SexyButton(name = "Следующий шаг", modifier = Modifier.fillMaxWidth())
+        SexyButton(
+            name = "Следующий шаг",
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onNextStepClick
+        )
 //        Spacer(modifier = Modifier.height(16.dp))
     }
 }

@@ -1,12 +1,23 @@
-package com.moscow.travel.hack.presentation.ui.greeting.recomendation
+package com.moscow.travel.hack.presentation.ui.greeting.recommendation
 
 import android.app.DatePickerDialog
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -16,11 +27,12 @@ import com.moscow.travel.hack.presentation.view.SexyButton
 import com.moscow.travel.hack.presentation.view.SexyTextField
 import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 @Composable
 fun StartSearchScreen(
-    onTinderClick: (Int) -> Unit,
+    onNext: () -> Unit,
 ) {
     var text by remember { mutableStateOf("") }
     var startDate by remember { mutableStateOf("") }
@@ -61,10 +73,15 @@ fun StartSearchScreen(
                     dialog.show()
                 }, name = if (endDate == "") "Дата окончания" else endDate)
             }
-            SexyTextField(modifier = Modifier.fillMaxWidth(), icon = Icons.Rounded.Search)
+            SexyTextField(
+                modifier = Modifier.fillMaxWidth(),
+                icon = Icons.Rounded.Search,
+                onChange = { text = it })
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(cities) {
-                    CityCard(city = it, onCityClick = onTinderClick)
+                    CityCard(city = it, onCityClick = {
+                        onNext()
+                    })
                 }
             }
         }

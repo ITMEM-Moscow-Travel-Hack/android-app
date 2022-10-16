@@ -1,6 +1,9 @@
-package com.moscow.travel.hack.presentation.ui.greeting.recomendation
+package com.moscow.travel.hack.presentation.ui.greeting.recommendation
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -13,12 +16,16 @@ import com.moscow.travel.hack.presentation.view.HotelCard
 import com.moscow.travel.hack.presentation.view.SexyTextField
 
 @Composable
-fun HotelsScreen() {
+fun HotelsScreen(
+    onNextStepClick: () -> Unit,
+) {
     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         SexyTextField(modifier = Modifier.fillMaxWidth(), icon = Icons.Rounded.Search)
         LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             items(hotels) {
-                HotelCard(hotel = it, onHotelClick = {})
+                HotelCard(hotel = it, onHotelClick = {
+                    onNextStepClick()
+                })
             }
         }
     }

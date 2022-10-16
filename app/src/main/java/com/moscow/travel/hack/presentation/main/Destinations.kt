@@ -25,13 +25,10 @@ enum class InterestsSections(
     MAIN("$INTEREST/main"),
 }
 
-enum class RecomendationsSections(
+enum class RecommendationsSections(
     val route: String
 ) {
-    START_SEARCH("$RECOMENDATIONS/start_search"),
-    TINDER("$RECOMENDATIONS/main"),
-    HOTELS("$RECOMENDATIONS/hotels"),
-    SUMMARY("$RECOMENDATIONS/summary"),
+    MAIN("$RECOMENDATIONS/main"),
 }
 
 enum class MainSections(
