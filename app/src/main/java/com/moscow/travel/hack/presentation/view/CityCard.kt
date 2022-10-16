@@ -57,7 +57,7 @@ fun CityCard(
                 placeholder = painterResource(R.drawable.ic_placeholder),
                 error = painterResource(R.drawable.ic_placeholder),
                 contentDescription = null,
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(90.dp)
                     .clip(MaterialTheme.shapes.large)
