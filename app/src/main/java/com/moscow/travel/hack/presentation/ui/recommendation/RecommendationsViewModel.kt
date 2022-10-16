@@ -19,9 +19,20 @@ class RecommendationsViewModel : ViewModel() {
     var selectedHotel by mutableStateOf<Hotel?>(null)
     var selectedPlaces = mutableStateListOf<Place>()
 
+    val selectedSum: Float
+        get() {
+            var ans = selectedHotel?.price ?: 0f
+            for (place in selectedPlaces) {
+                ans += place.price
+            }
+            return ans
+        }
+
     fun resetAll() {
         selectedCity = null
         selectedHotel = null
+        startDate = null
+        endDate = null
         selectedPlaces = mutableStateListOf()
     }
 }

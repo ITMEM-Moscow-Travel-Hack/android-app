@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">russpASS</string>
+    <string name="app_name">RUSSPASS</string>
 
     // labels
     <string name="registration_label">Зарегистрироваться</string>

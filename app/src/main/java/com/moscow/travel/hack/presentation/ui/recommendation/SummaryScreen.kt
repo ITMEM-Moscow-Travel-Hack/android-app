@@ -28,7 +28,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.moscow.travel.hack.BuildConfig
-import com.moscow.travel.hack.domain.entity.places
 import com.moscow.travel.hack.presentation.view.HotelCard
 import com.moscow.travel.hack.presentation.view.SelectedPlaceCard
 import com.moscow.travel.hack.presentation.view.SexyButton
@@ -133,15 +132,17 @@ fun SummaryScreen(
                         fontWeight = FontWeight.Bold
                     )
                     TextButton(
-                        onClick = { },
+                        onClick = onAddPlaceClick,
                         modifier = Modifier
                     ) {
                         Text("Добавить", color = Color.Black)
                     }
                 }
             }
-            items(places) {
-                SelectedPlaceCard(place = it, onPlaceClick = {})
+            items(viewModel.selectedPlaces) {
+                SelectedPlaceCard(place = it, onPlaceClick = { _ ->
+                    viewModel.selectedPlaces.remove(it)
+                })
             }
             item {
                 Spacer(modifier = Modifier.height(80.dp))
@@ -153,7 +154,7 @@ fun SummaryScreen(
                     PaymentConfiguration(
                         paymentData = PaymentData(
                             BuildConfig.CLOUDPAYMENTS_PUBLIC_ID,
-                            "15678",
+                            viewModel.selectedSum.toString(),
                             currency = "RUB",
 //                            jsonData = hashMapOf(
 //                                "userId" to viewModel.profileId.value.toString(),
@@ -169,7 +170,7 @@ fun SummaryScreen(
                 .align(Alignment.BottomCenter)
                 .padding(horizontal = 48.dp)
                 .padding(bottom = 24.dp),
-            name = "Оплатить 15.678 руб"
+            name = "Оплатить ${viewModel.selectedSum} руб"
         )
     }
 }

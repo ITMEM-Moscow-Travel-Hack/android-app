@@ -57,6 +57,14 @@ fun TinderScreen(
                                 state = state,
                                 blockedDirections = listOf(Direction.Down, Direction.Up),
                                 onSwiped = {
+                                    if (it == Direction.Right) {
+                                        val element = states
+                                            .reversed()
+                                            .firstOrNull {
+                                                it.second.offset.value == Offset(0f, 0f)
+                                            }
+                                        element?.first?.let { viewModel.selectedPlaces.add(it) }
+                                    }
                                 },
                                 onSwipeCancel = {
                                 }
@@ -76,12 +84,13 @@ fun TinderScreen(
                         },
                         onFav = {
                             scope.launch {
-                                val last = states.reversed()
+                                val element = states.reversed()
                                     .firstOrNull {
                                         it.second.offset.value == Offset(0f, 0f)
-                                    }?.second
-
+                                    }
+                                val last = element?.second
                                 last?.swipe(Direction.Right)
+                                element?.first?.let { viewModel.selectedPlaces.add(it) }
                             }
                         }
                     )

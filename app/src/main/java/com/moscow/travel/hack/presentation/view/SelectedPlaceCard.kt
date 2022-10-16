@@ -83,7 +83,7 @@ fun SelectedPlaceCard(
             }
             Spacer(modifier = Modifier.weight(1f))
             CircleButton(
-                onClick = { },
+                onClick = { onPlaceClick(place.id) },
                 icon = Icons.Default.Close,
             )
         }
