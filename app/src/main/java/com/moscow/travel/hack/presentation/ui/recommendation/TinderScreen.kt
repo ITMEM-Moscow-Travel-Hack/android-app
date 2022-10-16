@@ -18,7 +18,6 @@ import com.alexstyl.swipeablecard.Direction
 import com.alexstyl.swipeablecard.ExperimentalSwipeableCardApi
 import com.alexstyl.swipeablecard.rememberSwipeableCardState
 import com.alexstyl.swipeablecard.swipableCard
-import com.moscow.travel.hack.domain.entity.places
 import com.moscow.travel.hack.presentation.view.PlaceCard
 import com.moscow.travel.hack.presentation.view.SexyButton
 import com.moscow.travel.hack.presentation.view.SexyTextField
@@ -32,7 +31,7 @@ fun TinderScreen(
     onNextStepClick: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
-    val states = places.reversed().map { it to rememberSwipeableCardState() }
+    val states = viewModel.places.reversed().map { it to rememberSwipeableCardState() }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -114,7 +113,10 @@ fun TinderScreen(
         SexyButton(
             name = "Следующий шаг",
             modifier = Modifier.fillMaxWidth(),
-            onClick = onNextStepClick
+            onClick = {
+                viewModel.fetchHotels()
+                onNextStepClick()
+            }
         )
 //        Spacer(modifier = Modifier.height(16.dp))
     }

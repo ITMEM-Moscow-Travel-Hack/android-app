@@ -93,7 +93,7 @@ fun StartSearchScreen(
                                 .show()
                         } else {
                             viewModel.selectedCity = it
-                            viewModel.fetchHotels()
+                            viewModel.fetchPlaces()
                             onNext()
                         }
                     })
