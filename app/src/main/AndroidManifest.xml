@@ -20,6 +20,7 @@
         android:roundIcon="@drawable/ic_russpass"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoscowTravelHackApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".presentation.main.MainActivity"

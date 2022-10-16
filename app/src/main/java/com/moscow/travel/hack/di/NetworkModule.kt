@@ -1,12 +1,14 @@
 package com.moscow.travel.hack.di
 
 import com.moscow.travel.hack.BASE_URL
-import com.moscow.travel.hack.data.TrofikAPI
+import com.moscow.travel.hack.core.ext.log
+import com.moscow.travel.hack.data.api.TrofikAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,11 +18,11 @@ class NetworkModule {
     @Provides
     fun provideOkHttp(): OkHttpClient {
         return OkHttpClient.Builder()
-//            .addInterceptor(
-//                HttpLoggingInterceptor(::log).apply {
-//                    level = HttpLoggingInterceptor.Level.BODY
-//                }
-//            )
+            .addInterceptor(
+                HttpLoggingInterceptor(::log).apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                }
+            )
             .build()
     }
 

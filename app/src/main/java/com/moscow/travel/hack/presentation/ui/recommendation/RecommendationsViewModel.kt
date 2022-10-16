@@ -5,12 +5,18 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.moscow.travel.hack.data.repository.MTHRepository
 import com.moscow.travel.hack.domain.entity.City
 import com.moscow.travel.hack.domain.entity.Hotel
 import com.moscow.travel.hack.domain.entity.Place
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Date
+import javax.inject.Inject
 
-class RecommendationsViewModel : ViewModel() {
+@HiltViewModel
+class RecommendationsViewModel @Inject constructor(
+    private val repository: MTHRepository,
+) : ViewModel() {
 
     var startDate by mutableStateOf<Date?>(null)
     var endDate by mutableStateOf<Date?>(null)
