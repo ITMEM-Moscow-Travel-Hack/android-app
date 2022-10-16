@@ -1,11 +1,14 @@
 package com.moscow.travel.hack.presentation.main
 
 import com.moscow.travel.hack.presentation.main.MainDestinations.GREETING
-import com.moscow.travel.hack.presentation.main.MainDestinations.MAP
+import com.moscow.travel.hack.presentation.main.MainDestinations.INTEREST
+import com.moscow.travel.hack.presentation.main.MainDestinations.RECOMENDATIONS
 
 object MainDestinations {
     const val GREETING = "greeting"
-    const val MAP = "map"
+    const val INTEREST = "interest"
+    const val MAIN = "main"
+    const val RECOMENDATIONS = "recomendations"
     //TODO: Описать остальные экраны
 }
 
@@ -16,8 +19,20 @@ enum class GreetingSections(
     ONBOARDING("$GREETING/onboarding"),
 }
 
-enum class MapSections(
+enum class InterestsSections(
     val route: String
 ) {
-    MAIN("$MAP/main"),
+    MAIN("$INTEREST/main"),
+}
+
+enum class RecommendationsSections(
+    val route: String
+) {
+    MAIN("$RECOMENDATIONS/main"),
+}
+
+enum class MainSections(
+    val route: String
+) {
+    MAIN("$MAIN/main")
 }

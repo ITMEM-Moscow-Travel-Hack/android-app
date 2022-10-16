@@ -1,22 +1,17 @@
 package com.moscow.travel.hack.presentation.ui.greeting.welcome
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.moscow.travel.hack.R
+import com.moscow.travel.hack.presentation.view.SexyButton
 
 @Composable
 fun WelcomeScreen(
@@ -31,35 +26,32 @@ fun WelcomeScreen(
         ) {
             Text(
 //                    stringResource(R.string.hello_label),
-                "Привет",
+                "Привет! Я помогу с организацией твоего путешествия",
                 style = MaterialTheme.typography.h5,
-                modifier = Modifier.padding(end = 10.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
+                textAlign = TextAlign.Center
             )
             Image(
-                painterResource(R.drawable.ic_launcher_background),
+                painterResource(R.drawable.ic_welcome),
                 contentDescription = null,
-                Modifier.padding(top = 36.dp)
+                Modifier.weight(1f)
             )
         }
         Column(
             Modifier.align(Alignment.BottomCenter),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(
+            SexyButton(
                 onClick = {
                     onContinueClick()
                 },
-                Modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
                     .padding(bottom = 8.dp)
-                    .height(48.dp)
-            ) {
-                Text(
-//                        stringResource(R.string.continue_label)
-                    "Продолжить"
-                )
-            }
+                    .height(48.dp),
+                name = "Поехали!"
+            )
             Spacer(modifier = Modifier.height(32.dp))
         }
     }

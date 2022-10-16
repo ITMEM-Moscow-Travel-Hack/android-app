@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">russpASS</string>
+    <string name="app_name">RUSSPASS</string>
 
     // labels
     <string name="registration_label">Зарегистрироваться</string>
     <string name="have_an_account_label">Есть аккаунт?</string>
     <string name="login_label">Войти</string>
+    <string name="save_and_continue">Сохранить и продолжить</string>
+    <string name="hotels">Отели</string>
 </resources>
