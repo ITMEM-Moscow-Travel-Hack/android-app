@@ -1,17 +1,19 @@
 package com.moscow.travel.hack.domain.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class Hotel(
-    val id: Int,
-    val rating: Float,
+    val id: String,
+    @SerializedName("stars") val rating: Float,
     val name: String,
     val address: String,
-    val price: Float,
-    val photoUri: String,
+    @SerializedName("minPrice") val price: Float,
+    @SerializedName("image") val photoUri: String,
 )
 
-val hotels = listOf(
+val mockHotels = listOf(
     Hotel(
-        1,
+        "1",
         4f,
         "Гостиница Измайлово Дельта",
         "Измайловское ш., д. 71, корп. 4 Г—Д",
@@ -19,7 +21,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/62fcf82271b9411345c74ab2/640/480"
     ),
     Hotel(
-        2,
+        "2",
         1f,
         "Дизайн-хостел Strawberry Duck Moscow",
         "Потаповский пер., д. 8/12 стр. 2",
@@ -27,7 +29,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/62efae8971b94113457d3d65/640/480"
     ),
     Hotel(
-        3,
+        "3",
         5f,
         "Chekhoff Hotel Moscow Curio Collection by Hilton",
         "ул. Малая Дмитровка, д. 11",
@@ -35,7 +37,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/62d1356071b9411345d97339/640/480"
     ),
     Hotel(
-        4,
+        "4",
         4f,
         "Гостиница «Эрмитаж»",
         "Дурасовский пер., д. 7, стр. 1",
@@ -43,7 +45,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/632d64b166018edd5c67a0bf/640/480"
     ),
     Hotel(
-        5,
+        "5",
         4f,
         "B.60 Hotel",
         "ул. 1-я Брестская, д. 60",
@@ -51,7 +53,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/62fa390871b9411345b563b5/640/480"
     ),
     Hotel(
-        6,
+        "6",
         3f,
         "Отель «Паркофф»",
         "ул. 11-я Парковая, д. 34A",
@@ -59,7 +61,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/62a1eafe6f8422bf95ecb258/640/480"
     ),
     Hotel(
-        7,
+        "7",
         4f,
         "Гостиница «Парк Тауэр»",
         "Дмитровское ш., д. 27",
@@ -67,7 +69,7 @@ val hotels = listOf(
         "https://cms.russpass.ru/v1/file/62a1eb46b076bd79ea7d1493/640/480"
     ),
     Hotel(
-        8,
+        "8",
         4f,
         "Гостиница Viewpoint Hotel",
         "Садовническая наб., д. 7",

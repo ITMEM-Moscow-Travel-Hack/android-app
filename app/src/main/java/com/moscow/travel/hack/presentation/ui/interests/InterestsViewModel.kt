@@ -4,7 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moscow.travel.hack.R
-import com.moscow.travel.hack.data.dto.CategoriesRequest
+import com.moscow.travel.hack.data.dto.request.CategoriesRequest
 import com.moscow.travel.hack.data.repository.MTHRepository
 import com.moscow.travel.hack.presentation.view.InterestItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,7 +35,7 @@ class InterestsViewModel @Inject constructor(
         viewModelScope.launch {
             repository.sendCategories(
                 CategoriesRequest(
-                    "123",
+                    "gtrhjgrbtjhgr",
                     categories.filter { it.isSelected }.map {
                         it.name
                     }

@@ -1,6 +1,7 @@
 package com.moscow.travel.hack.presentation.ui.recommendation
 
 import android.app.DatePickerDialog
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.moscow.travel.hack.domain.entity.cities
 import com.moscow.travel.hack.presentation.view.CityCard
 import com.moscow.travel.hack.presentation.view.SexyButton
 import com.moscow.travel.hack.presentation.view.SexyTextField
@@ -86,10 +86,16 @@ fun StartSearchScreen(
                 icon = Icons.Rounded.Search,
                 onChange = { text = it })
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(cities) {
+                items(viewModel.cities) {
                     CityCard(city = it, onCityClick = { _ ->
-                        viewModel.selectedCity = it
-                        onNext()
+                        if (viewModel.startDate == null || viewModel.endDate == null) {
+                            Toast.makeText(context, "Выберите даты поездки!", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            viewModel.selectedCity = it
+                            viewModel.fetchHotels()
+                            onNext()
+                        }
                     })
                 }
             }

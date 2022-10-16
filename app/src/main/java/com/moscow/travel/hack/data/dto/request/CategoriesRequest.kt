@@ -1,4 +1,4 @@
-package com.moscow.travel.hack.data.dto
+package com.moscow.travel.hack.data.dto.request
 
 import com.google.gson.annotations.SerializedName
 

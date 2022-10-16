@@ -2,7 +2,12 @@ package com.moscow.travel.hack.presentation.view
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -29,9 +34,9 @@ fun HotelCard(
     hotel: Hotel,
     days: Int = 0,
     modifier: Modifier = Modifier,
-    onHotelClick: (Int) -> Unit,
+    onHotelClick: (String) -> Unit,
 ) {
-    Card(modifier = Modifier
+    Card(modifier = modifier
         .clip(MaterialTheme.shapes.large)
         .border(
             2.dp,
