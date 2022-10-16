@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.moscow.travel.hack.presentation.ui.greeting.interests.InterestsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.onboarding.OnboardingScreen
+import com.moscow.travel.hack.presentation.ui.greeting.recomendation.HotelsScreen
 import com.moscow.travel.hack.presentation.ui.greeting.recomendation.StartSearchScreen
 import com.moscow.travel.hack.presentation.ui.greeting.recomendation.TinderScreen
 import com.moscow.travel.hack.presentation.ui.greeting.welcome.WelcomeScreen
@@ -48,7 +49,8 @@ fun MTHNavHost(
             MainScreen(
                 onSuggestionsClick = {
                     Timber.e("GOING SUGGESTIONS")
-                    navController.navigate(MainSections.SUGGESTIONS.route) }
+                    navController.navigate(MainSections.SUGGESTIONS.route)
+                }
             )
         }
         composable(MainSections.SUGGESTIONS.route) {
@@ -56,7 +58,12 @@ fun MTHNavHost(
                 onBackPressed = { navController.navigateUp() },
                 onStartClick = {
                     Timber.e("START SEARCH")
-                    navController.navigate(RecomendationsSections.START_SEARCH.route) }
+                    navController.navigate(RecomendationsSections.START_SEARCH.route)
+                }
+            )
+        }
+        composable(RecomendationsSections.HOTELS.route) {
+            HotelsScreen(
             )
         }
     }

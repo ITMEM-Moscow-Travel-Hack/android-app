@@ -29,6 +29,8 @@ import com.moscow.travel.hack.domain.entity.cities
 import com.moscow.travel.hack.presentation.view.CityCard
 import com.moscow.travel.hack.presentation.view.SearchField
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.Date
 import java.util.Locale
 
@@ -72,13 +74,13 @@ fun StartSearchScreen(
                 Card(modifier = Modifier
                     .weight(1f)
                     .clickable {
-                        val date = Date()
+                        val date = LocalDate.now()
                         val dialog = DatePickerDialog(
                             context, { _, year: Int, month: Int, day: Int ->
                                 val date = Date(year, month, day)
                                 val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
                                 endDate = formatter.format(date)
-                            }, date.year, date.month, date.day
+                            }, date.year, date.month.value, date.dayOfYear
                         )
                         dialog.show()
                     }) {

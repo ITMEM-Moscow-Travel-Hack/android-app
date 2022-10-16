@@ -24,8 +24,8 @@ class AppState(
 
     @Composable
     fun getStartDestination(): String {
-        return GreetingSections.WELCOME.route
-//        return MainSections.MAIN.route
+//        return GreetingSections.WELCOME.route
+        return RecomendationsSections.HOTELS.route
     }
 
     private fun shouldHideTopBar(route: String?): Boolean {
