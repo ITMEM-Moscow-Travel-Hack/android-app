@@ -63,9 +63,7 @@ fun CityCard(
                     .clip(MaterialTheme.shapes.large)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Column(
-                modifier = Modifier.height(90.dp)
-            ) {
+            Column {
                 Text(
                     text = city.name,
                     color = MaterialTheme.colors.onPrimary,
