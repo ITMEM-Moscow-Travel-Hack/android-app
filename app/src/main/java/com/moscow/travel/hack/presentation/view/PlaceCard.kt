@@ -43,7 +43,7 @@ fun PlaceCard(
     Card(
         modifier
             .clip(MaterialTheme.shapes.large)
-            .border(2.5.dp, MaterialTheme.colors.Background2, MaterialTheme.shapes.large)
+            .border(2.dp, MaterialTheme.colors.Background2, MaterialTheme.shapes.large)
             .background(MaterialTheme.colors.background)
             .clickable(enabled = onClick != null) {
                 onClick?.invoke(place.id)

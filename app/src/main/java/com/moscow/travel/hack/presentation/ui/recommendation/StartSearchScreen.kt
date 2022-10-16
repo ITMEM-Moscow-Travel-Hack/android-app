@@ -82,6 +82,7 @@ fun StartSearchScreen(
             }
             SexyTextField(
                 modifier = Modifier.fillMaxWidth(),
+                placeholder = "Поиск направления",
                 icon = Icons.Rounded.Search,
                 onChange = { text = it })
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {

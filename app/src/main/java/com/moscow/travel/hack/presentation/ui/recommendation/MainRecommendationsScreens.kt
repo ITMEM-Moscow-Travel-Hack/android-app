@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.moscow.travel.hack.presentation.theme.Background2
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.moscow.travel.hack.presentation.theme.Background2
 import com.moscow.travel.hack.presentation.view.StepsProgressBar
 import com.moscow.travel.hack.presentation.view.TopAppBarNavButton
 
@@ -35,28 +35,21 @@ fun MainRecommendationsScreen(
             TopAppBar(
                 modifier = Modifier.height(100.dp),
                 title = {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 12.dp)) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = 12.dp)
+                    ) {
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(49.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             TopAppBarNavButton { handleBackPress() }
                             Spacer(modifier = Modifier.size(8.dp))
                             Title(stepNumber = currentStep.value)
-                        }
-                        Divider(thickness = 2.5.dp, color = MaterialTheme.colors.Background2)
-                        Box(
-                            modifier = Modifier.fillMaxSize()
-                        ) {
-                            StepsProgressBar(
-                                modifier = Modifier
-                                    .align(Alignment.Center)
-                                    .fillMaxWidth(0.5f),
-                                numberOfSteps = 4,
-                                currentStep = currentStep.value
-                            )
+                            Spacer(modifier = Modifier.weight(1f))
                             if (currentStep.value in 2..3) {
                                 TextButton(
                                     onClick = {
@@ -71,11 +64,23 @@ fun MainRecommendationsScreen(
                                             }
                                         }
                                     },
-                                    modifier = Modifier.align(Alignment.CenterEnd)
+                                    modifier = Modifier.height(44.dp)
                                 ) {
                                     ButtonText(stepNumber = currentStep.value)
                                 }
                             }
+                        }
+                        Divider(thickness = 2.5.dp, color = MaterialTheme.colors.Background2)
+                        Box(
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            StepsProgressBar(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .fillMaxWidth(0.5f),
+                                numberOfSteps = 4,
+                                currentStep = currentStep.value
+                            )
                         }
                     }
                 },
@@ -83,7 +88,7 @@ fun MainRecommendationsScreen(
             )
         },
 
-    ) { innerPadding ->
+        ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -98,10 +103,10 @@ fun MainRecommendationsScreen(
 fun Title(stepNumber: Int) {
     Text(
         when (stepNumber) {
-            0 -> "Выберите даты и город поездки"
+            0 -> "Выберите дату и направление"
             1 -> "Выберите интересные места"
             2 -> "Выберите отель"
-            3 -> "Проверьте заказ и произведите оплату"
+            3 -> "Ваша поездка"
             else -> ""
         }, color = Color.Black
     )

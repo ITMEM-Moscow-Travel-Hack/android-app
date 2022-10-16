@@ -45,7 +45,7 @@ fun SexyTextField(
         placeholder = { Text(placeholder) },
         shape = Shapes.large,
         modifier = modifier
-            .clip(Shapes.large).border(2.5.dp, color = MaterialTheme.colors.Background2, MaterialTheme.shapes.large),
+            .clip(Shapes.large).border(2.dp, color = MaterialTheme.colors.Background2, MaterialTheme.shapes.large),
         colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.TFBackground)
     )
 }

@@ -21,7 +21,7 @@ fun HotelsScreen(
     onNextStepClick: () -> Unit,
 ) {
     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        SexyTextField(modifier = Modifier.fillMaxWidth(), icon = Icons.Rounded.Search)
+        SexyTextField(modifier = Modifier.fillMaxWidth(), placeholder = "Поиск отеля", icon = Icons.Rounded.Search)
         LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             items(hotels) {
                 HotelCard(hotel = it, onHotelClick = { _ ->

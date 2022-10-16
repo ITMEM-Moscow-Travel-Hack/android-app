@@ -41,7 +41,7 @@ fun SelectedPlaceCard(
         modifier = Modifier
             .clip(MaterialTheme.shapes.large)
             .border(
-                2.5.dp,
+                2.dp,
                 color = MaterialTheme.colors.Background2,
                 shape = MaterialTheme.shapes.large
             )
