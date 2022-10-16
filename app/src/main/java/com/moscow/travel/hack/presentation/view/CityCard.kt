@@ -40,7 +40,8 @@ fun CityCard(
         Row(
             modifier
                 .fillMaxWidth()
-                .padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                .padding(8.dp), verticalAlignment = Alignment.CenterVertically
+        ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(city.photoUri)
@@ -55,9 +56,7 @@ fun CityCard(
                     .clip(MaterialTheme.shapes.large)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Column(
-                modifier = Modifier.height(90.dp)
-            ) {
+            Column {
                 Text(
                     text = city.name,
                     color = MaterialTheme.colors.onPrimary,
