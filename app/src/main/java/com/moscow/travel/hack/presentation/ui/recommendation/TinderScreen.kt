@@ -28,6 +28,7 @@ import timber.log.Timber
 @OptIn(ExperimentalSwipeableCardApi::class)
 @Composable
 fun TinderScreen(
+    viewModel: RecommendationsViewModel,
     onNextStepClick: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -94,7 +95,7 @@ fun TinderScreen(
         }
 //        Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Понравилось: X",
+            text = "Выбрано: ${viewModel.selectedPlaces.size}",
             color = MaterialTheme.colors.onBackground,
             fontSize = 32.sp,
             modifier = Modifier.fillMaxWidth(),

@@ -17,13 +17,15 @@ import com.moscow.travel.hack.presentation.view.SexyTextField
 
 @Composable
 fun HotelsScreen(
+    viewModel: RecommendationsViewModel,
     onNextStepClick: () -> Unit,
 ) {
     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         SexyTextField(modifier = Modifier.fillMaxWidth(), icon = Icons.Rounded.Search)
         LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             items(hotels) {
-                HotelCard(hotel = it, onHotelClick = {
+                HotelCard(hotel = it, onHotelClick = { _ ->
+                    viewModel.selectedHotel = it
                     onNextStepClick()
                 })
             }
