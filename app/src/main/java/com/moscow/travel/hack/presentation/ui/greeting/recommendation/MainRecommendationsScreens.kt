@@ -40,21 +40,37 @@ fun MainRecommendationsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        TopAppBarNavButton { handleBackPress() }
-                        StepsProgressBar(
-                            modifier = Modifier.weight(1f),
-                            numberOfSteps = 4,
-                            currentStep = currentStep.value
-                        )
-                        TextButton(
-                            onClick = { currentStep.value = 0 },
-                            modifier = Modifier
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text("Сбросить", color = Color.Black)
+                            TopAppBarNavButton { handleBackPress() }
+                            Title(stepNumber = currentStep.value)
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            StepsProgressBar(
+                                modifier = Modifier.weight(1f),
+                                numberOfSteps = 4,
+                                currentStep = currentStep.value
+                            )
+                            if (currentStep.value in listOf(2, 3)) {
+                                TextButton(
+                                    onClick = {
+                                        when (currentStep.value) {
+                                            2 -> currentStep.value = 3
+                                            3 -> currentStep.value = 0
+                                        }
+                                    },
+                                    modifier = Modifier
+                                ) {
+                                    ButtonText(stepNumber = currentStep.value)
+                                }
+                            }
                         }
                     }
                 },
@@ -70,6 +86,30 @@ fun MainRecommendationsScreen(
             CurrentStepScreen(stepNumber = currentStep.value) { currentStep.value = it }
         }
     }
+}
+
+@Composable
+fun Title(stepNumber: Int) {
+    Text(
+        when (stepNumber) {
+            0 -> "Выберите даты и город поездки"
+            1 -> "Выберите интересные места"
+            2 -> "Выберите отель"
+            3 -> "Проверьте заказ и произведите оплату"
+            else -> ""
+        }, color = Color.Black
+    )
+}
+
+@Composable
+fun ButtonText(stepNumber: Int) {
+    Text(
+        when (stepNumber) {
+            2 -> "Пропустить"
+            3 -> "Сбросить"
+            else -> ""
+        }, color = Color.Black
+    )
 }
 
 @Composable

@@ -119,7 +119,6 @@ fun MainScreen(onSuggestionsClick: () -> Unit) {
                 fontWeight = FontWeight.Medium
             )
             Spacer(modifier = Modifier.height(2.dp))
-
         }
 //            }
 //        }

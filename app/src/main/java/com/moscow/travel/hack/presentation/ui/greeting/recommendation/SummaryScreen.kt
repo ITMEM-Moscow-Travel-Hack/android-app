@@ -6,7 +6,14 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
@@ -59,7 +66,7 @@ fun SummaryScreen(
             if (it.status == CloudpaymentsSDK.TransactionStatus.Succeeded) {
                 Toast.makeText(
                     context,
-                    "Успешно! Транзакция №${it.transactionId}",
+                    "Успешно!",
                     Toast.LENGTH_SHORT
                 ).show()
 //                onSuccess()
@@ -68,13 +75,13 @@ fun SummaryScreen(
                 if (it.reasonCode != 0) {
                     Toast.makeText(
                         context,
-                        "Ошибка! Транзакция №${it.transactionId}. Код ошибки ${it.reasonCode}",
+                        "Ошибка!",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
                     Toast.makeText(
                         context,
-                        "Ошибка! Транзакция №${it.transactionId}.",
+                        "Ошибка!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -83,7 +90,9 @@ fun SummaryScreen(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .padding(8.dp)) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
