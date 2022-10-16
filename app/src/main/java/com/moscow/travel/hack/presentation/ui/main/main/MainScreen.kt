@@ -3,7 +3,15 @@ package com.moscow.travel.hack.presentation.ui.main.main
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.moscow.travel.hack.R
-import com.moscow.travel.hack.presentation.theme.Background2
 import com.moscow.travel.hack.presentation.theme.Shapes
 
 data class MainScreenButton(
@@ -75,28 +82,44 @@ fun MainScreen(onSuggestionsClick: () -> Unit) {
     ) {
 //        LazyRow {
 //            items(buttons) {
-        Image(modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop, painter = painterResource(id = R.drawable.img_screenshot), contentDescription = "")
+        Image(
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            painter = painterResource(id = R.drawable.img_screenshot),
+            contentDescription = ""
+        )
         Column(
             Modifier
                 .wrapContentWidth()
-                .padding(start = 14.dp, end = 8.dp, top = 312.dp)
+                .padding(start = 18.dp, top = 264.dp)
                 .clip(Shapes.medium)
-                .clickable { onSuggestionsClick() },
+                .clickable { onSuggestionsClick() }
+                .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
                 Modifier
-                    .clip(MaterialTheme.shapes.large).background(MaterialTheme.colors.Background2)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color(0xfff9edd5))
             ) {
                 Image(
                     painter = painterResource(id = button.img),
-                    modifier = Modifier.size(64.dp).padding(8.dp),
+                    modifier = Modifier
+                        .size(49.dp)
+                        .padding(8.dp),
                     contentDescription = button.name
                 )
             }
             Spacer(modifier = Modifier.height(2.dp))
-            Text(button.name, textAlign = TextAlign.Center, color = Color(0xff8d8c87), fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+            Text(
+                button.name,
+                textAlign = TextAlign.Center,
+                color = Color(0xff8d8c87),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+
         }
 //            }
 //        }
